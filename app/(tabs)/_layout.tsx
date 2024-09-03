@@ -1,26 +1,34 @@
 import { Tabs } from "expo-router";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { data } from "../../data";
-import { TabScreen } from "../../components/tabScreen";
 
 const TabsLayout = () => {
+  type Tab = {
+    label: string;
+    title: string;
+    iconName: "home" | "user" | "archive";
+  };
+
+  const tabs: Tab[] = [
+    { label: "home", title: "Home", iconName: "home" },
+    { label: "category", title: "Categorias", iconName: "archive" },
+    { label: "aboutMe", title: "Sobre Mim", iconName: "user" },
+  ];
+
   return (
     <Tabs>
-      {/* <Tabs.Screen name="" />
-      <Tabs.Screen name="" /> */}
-      <TabScreen label="(home)" title="Home" iconName="home" iconSize={30} />
-      <TabScreen
-        label="(categories)"
-        title="Categorias"
-        iconName="address-card"
-        iconSize={30}
-      />
-      <TabScreen
-        label="aboutMe"
-        title="Sobre Mim"
-        iconName="user"
-        iconSize={30}
-      />
+      {tabs.map((tab, key) => (
+        <Tabs.Screen
+          key={key}
+          name={tab.label}
+          options={{
+            title: tab.title,
+            tabBarIcon: ({ color }) => (
+              <FontAwesome name={tab.iconName} size={30} color={color} />
+            ),
+          }}
+        />
+      ))}
     </Tabs>
   );
 };
