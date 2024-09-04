@@ -7,12 +7,23 @@ const TabsLayout = () => {
     label: string;
     title: string;
     iconName: "home" | "user" | "archive";
+    headerShow: boolean;
   };
 
   const tabs: Tab[] = [
-    { label: "home", title: "Home", iconName: "home" },
-    { label: "category", title: "Categorias", iconName: "archive" },
-    { label: "aboutMe", title: "Sobre Mim", iconName: "user" },
+    { label: "home", title: "Home", iconName: "home", headerShow: true },
+    {
+      label: "categories",
+      title: "Categorias",
+      iconName: "archive",
+      headerShow: false,
+    },
+    {
+      label: "aboutMe",
+      title: "Sobre Mim",
+      iconName: "user",
+      headerShow: true,
+    },
   ];
 
   return (
@@ -22,6 +33,7 @@ const TabsLayout = () => {
           key={key}
           name={tab.label}
           options={{
+            headerShown: tab.headerShow,
             title: tab.title,
             tabBarIcon: ({ color }) => (
               <FontAwesome name={tab.iconName} size={30} color={color} />
