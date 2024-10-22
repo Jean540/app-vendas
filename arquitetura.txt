@@ -1,0 +1,23 @@
+O que eu imaginei:
+Stack
+    -Tela de inicio
+    -(tabs)
+        -stack
+            -inicio (lista de produtos)
+            -Produto
+        -stack
+            -categorias
+            -lista de produtos
+            -produto
+        -sobre mim
+
+como é:
+Stack
+    -Tela de inicio
+    -(tabs)
+        -inicio (lista de produtos)
+        Stack
+            -Lista categorias    
+            -Lista Produtos de UMA categoria
+        -sobre mim
+    -Produto Único
